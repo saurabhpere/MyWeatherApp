@@ -36,10 +36,20 @@ android {
         correctErrorTypes = true
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     externalNativeBuild {
         cmake {
             path("CMakeLists.txt")
         }
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
 }
 
@@ -76,6 +86,7 @@ dependencies {
     val room_version = "2.6.1"
     implementation ("androidx.room:room-runtime:$room_version")
     kapt ("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     val nav_version = "2.7.6"
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
@@ -90,4 +101,32 @@ dependencies {
     //splash screen
     implementation ("androidx.core:core-splashscreen:1.0.1")
 
+    val composeBom = platform("androidx.compose:compose-bom:2024.01.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    // Choose one of the following:
+    // Material Design 3
+    implementation("androidx.compose.material3:material3")
+    // or Material Design 2
+    implementation("androidx.compose.material:material")
+    // or skip Material Design and build directly on top of foundational components
+    implementation("androidx.compose.foundation:foundation")
+    // or only import the main APIs for the underlying toolkit systems,
+    // such as input and measurement/layout
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.activity:activity-compose:1.8.2")
+    // Optional - Integration with ViewModels
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    // Optional - Integration with LiveData
+    implementation("androidx.compose.runtime:runtime-livedata")
+    // Optional - Integration with RxJava
+    implementation("androidx.compose.runtime:runtime-rxjava2")
+
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycle_version")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    implementation ("com.google.android.gms:play-services-location:21.1.0")
+    implementation ("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }
