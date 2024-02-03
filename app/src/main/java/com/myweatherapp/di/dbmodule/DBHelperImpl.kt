@@ -13,7 +13,7 @@ class DBHelperImpl @Inject constructor(private val usersDao: UsersDao, private v
         usersDao.insertUser(users)
     }
 
-    override suspend fun getUserList()= usersDao.getUserList()
+    override suspend fun getUserList(email: String)= usersDao.getUserList(email)
     override suspend fun insertHistory(weatherHistory: WeatherHistory) {
         historyDao.insertHistory(weatherHistory)
     }

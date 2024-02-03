@@ -11,7 +11,7 @@ class DatabaseRepository @Inject constructor(private val dbHelper: DBHelper) {
         dbHelper.insertUserData(users)
     }
 
-    suspend fun getUserList() = dbHelper.getUserList()
+    suspend fun getUserList(email: String) = dbHelper.getUserList(email)
 
     suspend fun insertHistoryData(weatherHistory: WeatherHistory) {
         dbHelper.insertHistory(weatherHistory)

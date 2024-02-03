@@ -8,7 +8,7 @@ interface DBHelper {
 
     suspend fun insertUserData(users: Users)
 
-    suspend fun getUserList(): Flow<List<Users>>
+    suspend fun getUserList(email: String): Flow<List<Users>>
 
     suspend fun insertHistory(weatherHistory: WeatherHistory)
 

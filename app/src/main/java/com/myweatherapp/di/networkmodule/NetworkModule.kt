@@ -1,9 +1,12 @@
 package com.myweatherapp.di.networkmodule
 
+import android.content.Context
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.NetworkCheckInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,15 +16,17 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkM {
+object NetworkModule {
 
     @Provides
-    fun provideBaseUrl() = Constants.BASE_URL
+    fun provideBaseUrl() = Constants.getBaseUrl()
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() =
-        OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).build()
+    fun provideOkHttpClient(@ApplicationContext appContext: Context) =
+        OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor()).addInterceptor(
+            NetworkCheckInterceptor(appContext)
+        ).build()
 
 
     @Provides
