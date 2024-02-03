@@ -9,7 +9,5 @@ import javax.inject.Inject
 
 class NetworkRepository @Inject constructor(val apiHelper: ApiHelper) {
 
-    fun login(loginRequest: LoginRequest) = apiHelper.login(loginRequest).flowOn(Dispatchers.IO)
-
     fun getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest) = apiHelper.getCurrentWeather(currentWeatherRequest).flowOn(Dispatchers.IO)
 }

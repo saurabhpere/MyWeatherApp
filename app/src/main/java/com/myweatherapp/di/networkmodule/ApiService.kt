@@ -10,10 +10,6 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface ApiService {
-
-    @POST("auth")
-    suspend fun login(@Body loginRequest: LoginRequest): LoginResponse
-
     @GET("weather")
     suspend fun getCurrentWeatherData(
         @Query("appid") key: String,

@@ -16,17 +16,6 @@ import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(val apiService: ApiService): ApiHelper {
 
-    override fun login(loginRequest: LoginRequest) = flow {
-        emit(Resource.Loading())
-        try {
-            val apiResponse = apiService.login(loginRequest)
-            emit(Resource.Success(apiResponse))
-        } catch (ex: Exception){
-            ex.printStackTrace()
-            emit(Resource.Error(ex.localizedMessage))
-        }
-    }
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest): Flow<Resource<CurrentLocationResponse>> = flow {
         emit(Resource.Loading())

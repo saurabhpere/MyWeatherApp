@@ -10,7 +10,5 @@ import retrofit2.Response
 
 interface ApiHelper {
 
-    fun login(loginRequest: LoginRequest) : Flow<Resource<LoginResponse>>
-
     fun getCurrentWeather(currentWeatherRequest: CurrentWeatherRequest): Flow<Resource<CurrentLocationResponse>>
 }
