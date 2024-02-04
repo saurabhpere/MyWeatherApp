@@ -4,7 +4,7 @@
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_myweatherapp_resource_Keys_apiKey(JNIEnv *env, jobject thiz) {
-    std::string api_key = "Place your api key";
+    std::string api_key = "BASE64_API_KEY_HERE";
     return env->NewStringUTF(api_key.c_str());
 }
 

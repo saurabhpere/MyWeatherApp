@@ -11,6 +11,6 @@ interface UsersDao {
     @Insert
     fun insertUser(users: Users)
 
-    @Query("select * from users")
-    fun getUserList(): Flow<List<Users>>
+    @Query("select * from users where userName= :email")
+    fun getUserList(email: String): Flow<List<Users>>
 }

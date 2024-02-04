@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -50,6 +52,14 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.8"
+    }
+
+    testOptions {
+        fun Packaging.() {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
     }
 }
 
@@ -129,4 +139,34 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:21.1.0")
     implementation ("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
     implementation("io.coil-kt:coil-compose:2.5.0")
+
+    // Local unit tests
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
+    testImplementation ("com.google.truth:truth:1.1.3")
+    testImplementation ("com.squareup.okhttp3:mockwebserver:4.9.1")
+    testImplementation ("org.amshove.kluent:kluent-android:1.73")
+
+
+    //Testing
+    androidTestImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+    androidTestImplementation ("androidx.test:runner:1.4.0")
+
+    androidTestImplementation ("androidx.test:rules:1.4.0")
+    androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
+
+    testImplementation ("junit:junit:4.+")
+    testImplementation ("io.mockk:mockk:1.12.2")
+    testImplementation ("org.mockito:mockito-core:3.12.4")
+    androidTestImplementation ("io.mockk:mockk-android:1.12.2")
+
+    androidTestImplementation("org.mockito:mockito-android:3.12.4") {
+        exclude(group = "net.bytebuddy", module = "byte-buddy")
+    }
+
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
