@@ -17,6 +17,7 @@ object Constants {
     val tempConst = "Temp:"
 
     val timePattern = "HH:mm:ss"
+    val savedTimePattern = "dd MMM, HH:mm"
     val sessionConst = "loggedin"
 
     //routes

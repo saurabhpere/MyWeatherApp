@@ -13,10 +13,10 @@ fun String.isEmailValid(): Boolean {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun Long.convertTimeMillisToFormattedString(pattern: String = Constants.timePattern): String{
+fun Long.convertTimeMillisToFormattedString(pattern: String = Constants.timePattern, shouldConvertToMillis: Boolean = true): String{
     val formatted = DateTimeFormatter.ofPattern(pattern)
         .withZone(ZoneId.systemDefault())
-        .format(Instant.ofEpochMilli(this * 1000))
+        .format(Instant.ofEpochMilli(if (shouldConvertToMillis)this * 1000 else this))
     return formatted
 }
 
