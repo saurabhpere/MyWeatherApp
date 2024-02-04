@@ -15,6 +15,8 @@ import com.myweatherapp.resource.LocationLiveData
 import com.myweatherapp.resource.Status
 import com.myweatherapp.data.request.CurrentWeatherRequest
 import com.myweatherapp.data.response.CurrentLocationResponse
+import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.extension.convertTimeMillisToFormattedString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -53,6 +55,7 @@ class HomeViewModel @Inject constructor(private val repository: NetworkRepositor
 
                             if (!dataSaved) {
                                 dataSaved = true
+                                it.data.timeSaved = System.currentTimeMillis().convertTimeMillisToFormattedString(Constants.savedTimePattern, false)
                                 val weatherHistory = WeatherHistory(Gson().toJson(it.data))
                                 dbRepository.insertHistoryData(weatherHistory = weatherHistory)
                             }

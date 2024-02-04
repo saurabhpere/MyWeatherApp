@@ -41,8 +41,8 @@ fun HistoryWeather(homeViewModel: HomeViewModel) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        LazyColumn {
-            items(homeViewModel.savedWeatherHistoryList.toList()) { currentLocation ->
+        LazyColumn (modifier = Modifier){
+            items(homeViewModel.savedWeatherHistoryList.toList().reversed()) { currentLocation ->
                 CurrentLocationItem(currentLocation = currentLocation)
             }
         }
@@ -84,10 +84,14 @@ fun CurrentLocationItem(currentLocation: CurrentLocationResponse) {
                 HistoryItem(Constants.sunsetConst, sunsetTime)
             }
 
-            AsyncImage(
-                model = Constants.getImageUrl() + "${currentLocation.weather?.get(0)?.icon!!}@2x.png",
-                contentDescription = "", modifier = Modifier.size(100.dp)
-            )
+            Column (horizontalAlignment = Alignment.CenterHorizontally){
+                Text(text = currentLocation.timeSaved?: "")
+                Spacer(modifier = Modifier.size(5.dp))
+                AsyncImage(
+                    model = Constants.getImageUrl() + "${currentLocation.weather?.get(0)?.icon!!}@2x.png",
+                    contentDescription = "", modifier = Modifier.size(100.dp)
+                )
+            }
         }
     }
 }

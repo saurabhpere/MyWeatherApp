@@ -9,7 +9,8 @@ data class CurrentLocationResponse (
     val name: String?= null,
     val cod: Int?= null,
     val sys: Sys?= null,
-    val main: Main?= null
+    val main: Main?= null,
+    var timeSaved: String?= null
 )
 data class Coord (
     val lat: Double,
