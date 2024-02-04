@@ -57,6 +57,7 @@ Kluent is a fluent assertion library for Kotlin. It simplifies the process of wr
 
 ## Getting Started
 Clone the repository: git clone https://github.com/saurabhpere/MyWeatherApp
+
 Open the project in Android Studio.
 
 ## Adding API Key to `native-lib.cpp`
