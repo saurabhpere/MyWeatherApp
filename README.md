@@ -40,6 +40,7 @@ Navigation within the app is managed using Compose Navigation, providing a seaml
 - JUnit
 - Kluent
 - Mockito
+- SqlCipher
 
 ## Unit Test
 This repository provides a comprehensive unit testing setup for Android applications using JUnit, Mockito, and Kluent. The testing framework is designed to ensure the reliability, correctness, and maintainability of the application codebase.
@@ -101,6 +102,17 @@ Manages user registration-related components.
 #### - Weather History: 
 Encompasses files related to displaying weather history.
 Each feature module consists of Compose UI (User Interface) and ViewModel components.
+
+### Security
+
+#### - SQLCipher Encryption in Room DB
+
+Our application employs [SQLCipher](https://www.zetetic.net/sqlcipher/) for encrypting sensitive data stored in the Room Database. SQLCipher provides robust encryption mechanisms, ensuring the confidentiality of user data.
+
+#### - ProGuard for Code Obfuscation
+
+To enhance the security of our application, we utilize [ProGuard](https://www.guardsquare.com/products/proguard) for code obfuscation. ProGuard helps make reverse engineering more challenging, protecting sensitive code and assets from unauthorized access.
+
 
 ## Environment Details
 #### Android Studio Version
