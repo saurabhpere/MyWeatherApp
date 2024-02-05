@@ -62,7 +62,7 @@ Clone the repository: git clone https://github.com/saurabhpere/MyWeatherApp
 
 Open the project in Android Studio.
 
-## Adding API Key to `native-lib.cpp`
+### Adding API Key to `native-lib.cpp`
 To integrate your API key you need to put OpenWeatherMap api key in base64 form into the `native-lib.cpp` file, follow these steps:
 1. Open the `cpp/native-lib.cpp` file in your preferred text editor.
 2. Locate the section where the API key needs to be added.
