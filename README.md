@@ -2,31 +2,31 @@
 WeatherAssignment is an Android application built using Kotlin and designed with MVVM Clean architecture. The app utilizes HILT for dependency injection, Compose for UI, Room for local database storage, Fused Location API for obtaining the current location, and the OpenWeatherMap API for fetching weather information. It also incorporates a Splash Screen API for a smooth startup experience.
 
 ## Features
-### MVVM Clean Architecture: 
+#### - MVVM Clean Architecture: 
 The application follows the MVVM architectural pattern with Clean Architecture principles, ensuring separation of concerns and maintainability.
 
-### Dependency Injection with HILT: 
+#### - Dependency Injection with HILT: 
 HILT is employed for dependency injection, facilitating the management of dependencies and promoting modularity.
 
-### Compose for UI: 
+#### - Compose for UI: 
 The UI is implemented using Jetpack Compose, providing a declarative and modern approach to building user interfaces.
 
-### Room Database: 
+#### - Room Database: 
 Room is used for local database storage, allowing the app to persistently store weather information and user data.
 
-### Fused Location API: 
+#### - Fused Location API: 
 The Fused Location API is utilized to determine the device's current location, enhancing the accuracy of weather data.
 
-### OpenWeatherMap API: 
+#### - OpenWeatherMap API: 
 The OpenWeatherMap API is integrated to fetch current weather information based on the device's location.
 
-### Splash Screen API: 
+#### - Splash Screen API: 
 A Splash Screen is implemented to enhance the user experience during app startup.
 
-### Login and Registration: 
+#### - Login and Registration: 
 The application includes screens for user login and registration, with local Room database storage for user credentials.
 
-### Compose Navigation: 
+#### - Compose Navigation: 
 Navigation within the app is managed using Compose Navigation, providing a seamless flow between screens.
 
 
@@ -45,13 +45,13 @@ Navigation within the app is managed using Compose Navigation, providing a seaml
 This repository provides a comprehensive unit testing setup for Android applications using JUnit, Mockito, and Kluent. The testing framework is designed to ensure the reliability, correctness, and maintainability of the application codebase.
 
 ### Key Components
-### JUnit
+#### - JUnit
 JUnit is a widely used testing framework for Java and Kotlin applications. It provides annotations for defining test methods, assertions for validating expected outcomes, and test runners for executing the tests.
 
-### Mockito
+#### - Mockito
 Mockito is a powerful mocking framework for Java and Kotlin. It allows the creation of mock objects to simulate dependencies, enabling isolated unit testing. Mockito works seamlessly with JUnit to facilitate effective testing of individual components.
 
-### Kluent
+#### - Kluent
 Kluent is a fluent assertion library for Kotlin. It simplifies the process of writing assertions by providing a clear and concise syntax. Kluent enhances the readability of tests and promotes expressive assertions.
 
 ### Unit test results
@@ -63,27 +63,27 @@ The project is organized into the following directories:
 ### data
 This directory encapsulates all data-related components. It includes subdirectories for various data models and operations:
 
-#### Location: 
+#### - Location: 
 Defines data models related to location.
-#### Api: 
+#### - Api: 
 Contains classes for handling API requests and responses.
-#### Database: 
+#### - Database: 
 Contains Data Access Object (DAO) and Entity classes for database operations.
 
 ### DI (Dependency Injection)
 The DI directory manages dependency injection modules for different aspects of the application:
 
-#### DB Module: 
+#### - DB Module: 
 Handles dependency injection related to the database.
-#### Network Module: 
+#### - Network Module: 
 Manages dependency injection for network-related components.
 
 ### repository
 The repository directory serves as the bridge between the data and the rest of the application. It is further divided into:
 
-#### Database Repository: 
+#### - Database Repository: 
 Manages data interactions with the local database.
-#### Network Repository: 
+#### - Network Repository: 
 Handles data interactions with remote APIs.
 ### resource
 The resource directory is dedicated to utility classes that can be utilized across different parts of the application.
@@ -91,21 +91,21 @@ The resource directory is dedicated to utility classes that can be utilized acro
 ### feature
 The feature directory is subdivided into specific features/modules of the application:
 
-#### Home: 
+#### - Home: 
 Contains files related to the home feature.
-#### Login: 
+#### - Login: 
 Contains files associated with user login functionality.
-#### Registration: 
+#### - Registration: 
 Manages user registration-related components.
-#### Weather History: 
+#### - Weather History: 
 Encompasses files related to displaying weather history.
 Each feature module consists of Compose UI (User Interface) and ViewModel components.
 
 ## Environment Details
-### Android Studio Version
+#### Android Studio Version
 This project is developed and tested on Android Studio version (Android Studio Hedgehog | 2023.1.1 Patch 2). Ensure that you are using a compatible version for seamless development.
 
-### Device Support
+#### Device Support
 The application is designed and optimized for Android phones. Ensure that your target devices meet the Android version requirements specified in the project.
 
 
