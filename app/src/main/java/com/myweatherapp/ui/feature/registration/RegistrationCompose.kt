@@ -39,6 +39,7 @@ import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.resource.Constants
 import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.resource.extension.get
+import com.myweatherapp.resource.extension.isEmailValid
 import com.myweatherapp.resource.extension.myAppPreferences
 import com.myweatherapp.resource.extension.set
 import com.myweatherapp.ui.helper.PasswordVisualTransformation
@@ -103,26 +104,42 @@ fun RegistrationScreen(navController: NavHostController, registrationViewModel: 
         Spacer(modifier = Modifier.size(40.dp))
 
         Button(onClick = {
-            if (confirmPassWordFieldValue == passWordFieldValue) {
-                val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
-                if(context.myAppPreferences.get(StringConstants.savedUserConst,"") != users.userName){
-                    registrationViewModel.deleteAllData()
-                } else {
-                    Toast.makeText(context, StringConstants.alreadyRegisteredUserMsg, Toast.LENGTH_SHORT).show()
+            if (nameFieldValue.isNotEmpty() && passWordFieldValue.isNotEmpty() && confirmPassWordFieldValue.isNotEmpty() && nameFieldValue.isEmailValid()) {
+                if (confirmPassWordFieldValue == passWordFieldValue) {
+                    val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
+                    if (context.myAppPreferences.get(
+                            StringConstants.savedUserConst,
+                            ""
+                        ) != users.userName
+                    ) {
+                        registrationViewModel.deleteAllData()
+                    } else {
+                        Toast.makeText(
+                            context,
+                            StringConstants.alreadyRegisteredUserMsg,
+                            Toast.LENGTH_SHORT
+                        ).show()
 
-                }
-                registrationViewModel.insertUser(users = users)
-                context.myAppPreferences[StringConstants.sessionConst] = true
-                context.myAppPreferences[StringConstants.savedUserConst] = users.userName
-
-                navController.navigate(StringConstants.homeRoute) {
-                    popUpTo(StringConstants.loginRoute) {
-                        inclusive = true
                     }
-                }
+                    registrationViewModel.insertUser(users = users)
+                    context.myAppPreferences[StringConstants.sessionConst] = true
+                    context.myAppPreferences[StringConstants.savedUserConst] = users.userName
 
+                    navController.navigate(StringConstants.homeRoute) {
+                        popUpTo(StringConstants.loginRoute) {
+                            inclusive = true
+                        }
+                    }
+
+                } else {
+                    Toast.makeText(
+                        context,
+                        StringConstants.passwordConfirmError,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             } else {
-                Toast.makeText(context, StringConstants.passwordConfirmError, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, StringConstants.invalidEmailError,Toast.LENGTH_SHORT).show()
             }
         }, modifier = Modifier.width(220.dp)) {
             Text(text = "Submit", style = TextStyle(fontSize = TextUnit(20f, TextUnitType.Sp)),color = Color.White)

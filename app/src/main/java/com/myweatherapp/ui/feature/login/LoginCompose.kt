@@ -89,7 +89,7 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
         Spacer(modifier = Modifier.size(80.dp))
 
         Button(onClick = {
-            if (nameFieldValue.isEmailValid()) {
+            if (nameFieldValue.isNotEmpty() && passWordFieldValue.isNotEmpty() && nameFieldValue.isEmailValid()) {
                 val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
                 loginViewModel.checkIfUserExist(users){
                     if (it == StringConstants.LOGIN_SUCCESS){
