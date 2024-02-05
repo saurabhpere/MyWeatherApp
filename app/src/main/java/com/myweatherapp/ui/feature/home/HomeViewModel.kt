@@ -54,8 +54,6 @@ class HomeViewModel @Inject constructor(private val repository: NetworkRepositor
                             loading.value = false
                             weatherResponseState.value = it.data!!
 
-
-
                             if (!dataSaved) {
                                 dataSaved = true
                                 it.data.timeSaved = System.currentTimeMillis().convertTimeMillisToFormattedString(

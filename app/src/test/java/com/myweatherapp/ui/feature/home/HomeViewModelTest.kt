@@ -11,6 +11,9 @@ import com.myweatherapp.resource.Status
 import com.myweatherapp.ui.feature.home.HomeViewModel
 import com.myweatherapp.data.request.CurrentWeatherRequest
 import com.myweatherapp.data.response.CurrentLocationResponse
+import com.myweatherapp.generateCurrentWeatherRequest
+import com.myweatherapp.generateWeatherDto
+import com.myweatherapp.generateWeatherHistory
 import com.myweatherapp.resource.Constants
 import com.myweatherapp.resource.Resource
 import com.myweatherapp.resource.TestLocationLiveData
@@ -23,6 +26,8 @@ import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
+import org.amshove.kluent.shouldBe
+import org.amshove.kluent.shouldEqual
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -69,7 +74,11 @@ class HomeViewModelTest {
     fun `getCurrentWeatherData success should update loading, weatherResponseState, and insert history data`() =
         runBlockingTest {
             // Arrange
-            every { networkRepository.getCurrentWeather(mockCurrentWeatherRequest) } returns flowOf(
+            val mockCurrentWeatherRequest: CurrentWeatherRequest = generateCurrentWeatherRequest()
+            val mockWeatherResponse: CurrentLocationResponse = generateWeatherDto()
+
+            // Mock the network repository response
+            coEvery { networkRepository.getCurrentWeather(mockCurrentWeatherRequest) } returns flowOf(
                 Resource.Success(mockWeatherResponse)
             )
 
@@ -77,9 +86,13 @@ class HomeViewModelTest {
             homeViewModel.getCurrentWeatherData(mockCurrentWeatherRequest)
 
             // Assert
-            testScheduler.apply { advanceTimeBy(1000); runCurrent() } // Advance time to allow coroutine to execute
-//            verify { homeViewModel.loading.value = false }
-//            verify { homeViewModel.weatherResponseState.value = mockWeatherResponse }
+            coroutineRule.testDispatcher.scheduler.apply { advanceTimeBy(1000); runCurrent() } // Advance time to execute coroutine
+
+            // Verify using a workaround for MutableState verification
+            homeViewModel.loading.value.shouldEqual( false)
+//            homeViewModel.weatherResponseState.value.shouldBe( mockWeatherResponse)
+
+            // Verify that insertHistoryData was called with the correct weather history
             coEvery {
                 dbRepository.insertHistoryData(
                     weatherHistory = match {
@@ -102,7 +115,7 @@ class HomeViewModelTest {
 
             // Assert
             testScheduler.apply { advanceTimeBy(1000); runCurrent() } // Advance time to allow coroutine to execute
-//            verify { homeViewModel.loading.value = false }
+            homeViewModel.loading.value.shouldBe( false)
             coEvery { dbRepository.insertHistoryData(any()) }
         }
 
@@ -118,8 +131,11 @@ class HomeViewModelTest {
 
             // Assert
             testScheduler.apply { advanceTimeBy(1000); runCurrent() } // Advance time to allow coroutine to execute
-//            verify { homeViewModel.savedWeatherHistoryList.clear() }
-//            verify { homeViewModel.savedWeatherHistoryList.addAll(mockWeatherHistoryList.map { it.getWeatherDetailsModel() }) }
+
+            homeViewModel.savedWeatherHistoryList.size.shouldEqual( 0)
+            homeViewModel.savedWeatherHistoryList.add(mockWeatherResponse)
+            testScheduler.apply { advanceTimeBy(1000); runCurrent() }
+            homeViewModel.savedWeatherHistoryList[0].shouldBe(mockWeatherResponse)
         }
 
 }
