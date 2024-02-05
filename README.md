@@ -148,4 +148,4 @@ Shows a listing of weather history saved in the local Room database.
 
 
 ## Contributing
-Feel free to contribute to the WeatherAssignment project by opening issues, providing feedback, or submitting pull requests. Your contributions are highly appreciated.
+Feel free to contribute to the WeatherAssignment project by opening issues, providing feedback, or submitting pull requests. Your contributions are highly appreciated. Being only contributor I have put all code in master directly.
