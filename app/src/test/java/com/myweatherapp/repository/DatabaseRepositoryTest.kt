@@ -5,6 +5,7 @@ import com.myweatherapp.di.dbmodule.FakeDBHelper
 import com.myweatherapp.generateUsers
 import com.myweatherapp.generateWeatherHistory
 import com.myweatherapp.randomString
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.test.runBlockingTest
 import org.amshove.kluent.shouldEqual
@@ -72,6 +73,24 @@ class DatabaseRepositoryTest {
         fakeDBHelper.deleteAllData()
 
         var result = databaseRepository.getHistoryList().last()
+
+        result.size.shouldEqual(0)
+    }
+
+    @Test
+    fun `deleteAllData should delete WeatherHistoryList db successfully`() = runBlockingTest {
+        // Perform some insertion to ensure there is data
+        val cityInfoDto = generateWeatherHistory()
+        databaseRepository.insertHistoryData(cityInfoDto)
+
+        // Delete data
+        databaseRepository.deleteAllData()
+
+        // Introduce a short delay to allow the asynchronous deletion to complete
+        delay(100)
+
+        // Check the result
+        val result = databaseRepository.getHistoryList().last()
 
         result.size.shouldEqual(0)
     }
