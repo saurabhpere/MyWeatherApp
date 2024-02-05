@@ -57,6 +57,58 @@ Kluent is a fluent assertion library for Kotlin. It simplifies the process of wr
 ### Unit test results
 - <img src="screenshots/unittest.png" alt="Screenshot 5" width="400"/>
 
+## Project Structure
+The project is organized into the following directories:
+
+### data
+This directory encapsulates all data-related components. It includes subdirectories for various data models and operations:
+
+#### Location: 
+Defines data models related to location.
+#### Api: 
+Contains classes for handling API requests and responses.
+#### Database: 
+Contains Data Access Object (DAO) and Entity classes for database operations.
+
+### DI (Dependency Injection)
+The DI directory manages dependency injection modules for different aspects of the application:
+
+#### DB Module: 
+Handles dependency injection related to the database.
+#### Network Module: 
+Manages dependency injection for network-related components.
+
+### repository
+The repository directory serves as the bridge between the data and the rest of the application. It is further divided into:
+
+#### Database Repository: 
+Manages data interactions with the local database.
+#### Network Repository: 
+Handles data interactions with remote APIs.
+### resource
+The resource directory is dedicated to utility classes that can be utilized across different parts of the application.
+
+### feature
+The feature directory is subdivided into specific features/modules of the application:
+
+#### Home: 
+Contains files related to the home feature.
+#### Login: 
+Contains files associated with user login functionality.
+#### Registration: 
+Manages user registration-related components.
+#### Weather History: 
+Encompasses files related to displaying weather history.
+Each feature module consists of Compose UI (User Interface) and ViewModel components.
+
+## Environment Details
+### Android Studio Version
+This project is developed and tested on Android Studio version (Android Studio Hedgehog | 2023.1.1 Patch 2). Ensure that you are using a compatible version for seamless development.
+
+### Device Support
+The application is designed and optimized for Android phones. Ensure that your target devices meet the Android version requirements specified in the project.
+
+
 ## Getting Started
 Clone the repository: git clone https://github.com/saurabhpere/MyWeatherApp
 
