@@ -103,7 +103,7 @@ Manages user registration-related components.
 Encompasses files related to displaying weather history.
 Each feature module consists of Compose UI (User Interface) and ViewModel components.
 
-### Security
+## Security
 
 #### - SQLCipher Encryption in Room DB
 
