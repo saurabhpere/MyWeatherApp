@@ -31,6 +31,7 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.myweatherapp.data.request.CurrentWeatherRequest
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.resource.extension.convertTemperatureToCelsius
 import com.myweatherapp.resource.extension.convertTimeMillisToFormattedString
 import com.myweatherapp.resource.extension.myAppPreferences
@@ -101,23 +102,23 @@ fun CurrentWeather(homeViewModel: HomeViewModel, navController: NavHostControlle
         Spacer(modifier = Modifier.size(30.dp))
 
         Row(modifier = Modifier.fillMaxWidth()) {
-            CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.name, boldText = Constants.cityConst,
+            CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.name, boldText = StringConstants.cityConst,
                 Color.Black)
             Spacer(modifier = Modifier.size(30.dp))
-            CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.name, boldText = Constants.countryConst,
+            CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.name, boldText = StringConstants.countryConst,
                 Color.Black)
         }
 
         Spacer(modifier = Modifier.size(20.dp))
 
         Row(modifier = Modifier.fillMaxWidth()) {
-            CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.sys?.sunrise?.convertTimeMillisToFormattedString(), boldText = Constants.sunriseConst,
+            CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.sys?.sunrise?.convertTimeMillisToFormattedString(), boldText = StringConstants.sunriseConst,
                 Color.Black)
 
             Spacer(modifier = Modifier.size(30.dp))
 
             CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.sys?.sunset?.convertTimeMillisToFormattedString(),
-                boldText = Constants.sunsetConst,
+                boldText = StringConstants.sunsetConst,
                 Color.Black)
         }
 
@@ -125,7 +126,7 @@ fun CurrentWeather(homeViewModel: HomeViewModel, navController: NavHostControlle
 
         Row(modifier = Modifier.fillMaxWidth()) {
             CommonTextWithSpan(text = homeViewModel.weatherResponseState.value.main?.temp?.convertTemperatureToCelsius(),
-                boldText = Constants.tempConst,
+                boldText = StringConstants.tempConst,
                 Color.Black)
         }
 
@@ -133,9 +134,9 @@ fun CurrentWeather(homeViewModel: HomeViewModel, navController: NavHostControlle
         Text(
             "Logout",
             modifier = Modifier.clickable {
-                                      context.myAppPreferences[Constants.sessionConst] = false
-                navController.navigate(Constants.loginRoute){
-                    popUpTo(Constants.homeRoute) {
+                                      context.myAppPreferences[StringConstants.sessionConst] = false
+                navController.navigate(StringConstants.loginRoute){
+                    popUpTo(StringConstants.homeRoute) {
                         inclusive = true
                     }
                 }

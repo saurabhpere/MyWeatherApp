@@ -5,10 +5,12 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.myweatherapp.data.db.entities.WeatherHistory
+import com.myweatherapp.data.location.LocationModel
 import com.myweatherapp.repository.DatabaseRepository
 import com.myweatherapp.repository.NetworkRepository
 import com.myweatherapp.resource.LocationLiveData
@@ -16,6 +18,7 @@ import com.myweatherapp.resource.Status
 import com.myweatherapp.data.request.CurrentWeatherRequest
 import com.myweatherapp.data.response.CurrentLocationResponse
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.resource.extension.convertTimeMillisToFormattedString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -27,12 +30,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: NetworkRepository, private val dbRepository: DatabaseRepository,
-                                        @ApplicationContext appContext: Context
+                                        private val _locationData: LiveData<LocationModel>
 ): ViewModel() {
 
-    private val locationData = LocationLiveData(context = appContext)
-
-    fun getLocationData() = locationData
+    fun getLocationData() = _locationData
 
     var weatherResponseState = mutableStateOf(CurrentLocationResponse(null, null, null, null, null, null, null,null, null))
 
@@ -57,7 +58,8 @@ class HomeViewModel @Inject constructor(private val repository: NetworkRepositor
 
                             if (!dataSaved) {
                                 dataSaved = true
-                                it.data.timeSaved = System.currentTimeMillis().convertTimeMillisToFormattedString(Constants.savedTimePattern, false)
+                                it.data.timeSaved = System.currentTimeMillis().convertTimeMillisToFormattedString(
+                                    StringConstants.savedTimePattern, false)
                                 val weatherHistory = WeatherHistory(Gson().toJson(it.data))
                                 dbRepository.insertHistoryData(weatherHistory = weatherHistory)
                             }

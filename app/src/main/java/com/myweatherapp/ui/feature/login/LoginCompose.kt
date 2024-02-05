@@ -38,6 +38,7 @@ import androidx.navigation.NavHostController
 import com.myweatherapp.R
 import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.resource.extension.get
 import com.myweatherapp.resource.extension.isEmailValid
 import com.myweatherapp.resource.extension.myAppPreferences
@@ -91,24 +92,24 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
             if (nameFieldValue.isEmailValid()) {
                 val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
                 loginViewModel.checkIfUserExist(users){
-                    if (it == Constants.LOGIN_SUCCESS){
-                        if(context.myAppPreferences.get(Constants.savedUserConst,"") != users.userName) {
+                    if (it == StringConstants.LOGIN_SUCCESS){
+                        if(context.myAppPreferences.get(StringConstants.savedUserConst,"") != users.userName) {
                             loginViewModel.deleteData()
                         }
-                        context.myAppPreferences[Constants.sessionConst] = true
-                        context.myAppPreferences[Constants.savedUserConst] = users.userName
-                        navController.navigate(Constants.homeRoute) {
-                            popUpTo(Constants.loginRoute) {
+                        context.myAppPreferences[StringConstants.sessionConst] = true
+                        context.myAppPreferences[StringConstants.savedUserConst] = users.userName
+                        navController.navigate(StringConstants.homeRoute) {
+                            popUpTo(StringConstants.loginRoute) {
                                 inclusive = true
                             }
                         }
                     } else {
-                        Toast.makeText(context, if (it == Constants.PASS_MISMATCH) Constants.passwordError else Constants.emailNotFoundError, Toast.LENGTH_SHORT).show()
-                        navController.navigate(Constants.registrationRoute)
+                        Toast.makeText(context, if (it == StringConstants.PASS_MISMATCH) StringConstants.passwordError else StringConstants.emailNotFoundError, Toast.LENGTH_SHORT).show()
+                        navController.navigate(StringConstants.registrationRoute)
                     }
                 }
             } else {
-                Toast.makeText(context, Constants.invalidEmailError,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, StringConstants.invalidEmailError,Toast.LENGTH_SHORT).show()
             }
         }, modifier = Modifier.width(220.dp)) {
             Text(text = "Submit", style = TextStyle(fontSize = TextUnit(20f, TextUnitType.Sp)),color = Color.White)
@@ -117,7 +118,7 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
         Spacer(modifier = Modifier.size(20.dp))
 
         Text(text = "Create Account", textDecoration = TextDecoration.Underline, color = Color.Gray, modifier = Modifier.clickable {
-            navController.navigate(Constants.registrationRoute)
+            navController.navigate(StringConstants.registrationRoute)
         })
     }
 }

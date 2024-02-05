@@ -1,7 +1,10 @@
 package com.myweatherapp.di.networkmodule
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import com.myweatherapp.data.location.LocationModel
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.LocationLiveData
 import com.myweatherapp.resource.NetworkCheckInterceptor
 import dagger.Module
 import dagger.Provides
@@ -44,4 +47,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideApiHelper(apiHelperImpl: ApiHelperImpl): ApiHelper = apiHelperImpl
+
+    @Provides
+    fun provideLocationLiveData(@ApplicationContext appContext: Context): LiveData<LocationModel> = LocationLiveData(appContext)
 }

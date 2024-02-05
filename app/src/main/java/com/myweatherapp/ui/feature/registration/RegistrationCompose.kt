@@ -37,6 +37,7 @@ import androidx.navigation.NavHostController
 import com.myweatherapp.R
 import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.resource.extension.get
 import com.myweatherapp.resource.extension.myAppPreferences
 import com.myweatherapp.resource.extension.set
@@ -104,24 +105,24 @@ fun RegistrationScreen(navController: NavHostController, registrationViewModel: 
         Button(onClick = {
             if (confirmPassWordFieldValue == passWordFieldValue) {
                 val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
-                if(context.myAppPreferences.get(Constants.savedUserConst,"") != users.userName){
+                if(context.myAppPreferences.get(StringConstants.savedUserConst,"") != users.userName){
                     registrationViewModel.deleteAllData()
                 } else {
-                    Toast.makeText(context, Constants.alreadyRegisteredUserMsg, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, StringConstants.alreadyRegisteredUserMsg, Toast.LENGTH_SHORT).show()
 
                 }
                 registrationViewModel.insertUser(users = users)
-                context.myAppPreferences[Constants.sessionConst] = true
-                context.myAppPreferences[Constants.savedUserConst] = users.userName
+                context.myAppPreferences[StringConstants.sessionConst] = true
+                context.myAppPreferences[StringConstants.savedUserConst] = users.userName
 
-                navController.navigate(Constants.homeRoute) {
-                    popUpTo(Constants.loginRoute) {
+                navController.navigate(StringConstants.homeRoute) {
+                    popUpTo(StringConstants.loginRoute) {
                         inclusive = true
                     }
                 }
 
             } else {
-                Toast.makeText(context, Constants.passwordConfirmError, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, StringConstants.passwordConfirmError, Toast.LENGTH_SHORT).show()
             }
         }, modifier = Modifier.width(220.dp)) {
             Text(text = "Submit", style = TextStyle(fontSize = TextUnit(20f, TextUnitType.Sp)),color = Color.White)

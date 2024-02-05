@@ -3,6 +3,7 @@ package com.myweatherapp.resource.extension
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -13,7 +14,7 @@ fun String.isEmailValid(): Boolean {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun Long.convertTimeMillisToFormattedString(pattern: String = Constants.timePattern, shouldConvertToMillis: Boolean = true): String{
+fun Long.convertTimeMillisToFormattedString(pattern: String = StringConstants.timePattern, shouldConvertToMillis: Boolean = true): String{
     val formatted = DateTimeFormatter.ofPattern(pattern)
         .withZone(ZoneId.systemDefault())
         .format(Instant.ofEpochMilli(if (shouldConvertToMillis)this * 1000 else this))

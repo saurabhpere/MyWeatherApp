@@ -27,6 +27,7 @@ import coil.compose.AsyncImage
 import com.myweatherapp.R
 import com.myweatherapp.data.response.CurrentLocationResponse
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.ui.widgets.HistoryItem
 import java.time.Instant
 import java.time.ZoneId
@@ -62,26 +63,26 @@ fun CurrentLocationItem(currentLocation: CurrentLocationResponse) {
                 .padding(8.dp)
                 .fillMaxWidth(), horizontalArrangement = Arrangement.Absolute.SpaceBetween, verticalAlignment = Alignment.CenterVertically){
             Column {
-                HistoryItem(Constants.cityConst, currentLocation.name)
+                HistoryItem(StringConstants.cityConst, currentLocation.name)
 
                 Spacer(modifier = Modifier.size(5.dp))
 
-                HistoryItem(Constants.tempConst, "" + String.format("%.2f", (currentLocation.main?.temp!! - 273.15))
+                HistoryItem(StringConstants.tempConst, "" + String.format("%.2f", (currentLocation.main?.temp!! - 273.15))
                     .toDouble() + "°C")
 
                 Spacer(modifier = Modifier.size(5.dp))
 
-                val sunriseTime = DateTimeFormatter.ofPattern(Constants.timePattern)
+                val sunriseTime = DateTimeFormatter.ofPattern(StringConstants.timePattern)
                     .withZone(ZoneId.systemDefault())
                     .format(Instant.ofEpochMilli(currentLocation.sys?.sunrise!! * 1000))
-                HistoryItem(Constants.sunriseConst, sunriseTime)
+                HistoryItem(StringConstants.sunriseConst, sunriseTime)
 
                 Spacer(modifier = Modifier.size(5.dp))
 
-                val sunsetTime = DateTimeFormatter.ofPattern(Constants.timePattern)
+                val sunsetTime = DateTimeFormatter.ofPattern(StringConstants.timePattern)
                     .withZone(ZoneId.systemDefault())
                     .format(Instant.ofEpochMilli(currentLocation.sys.sunset * 1000))
-                HistoryItem(Constants.sunsetConst, sunsetTime)
+                HistoryItem(StringConstants.sunsetConst, sunsetTime)
             }
 
             Column (horizontalAlignment = Alignment.CenterHorizontally){

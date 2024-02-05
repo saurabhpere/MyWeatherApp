@@ -169,4 +169,11 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+    testImplementation ("org.robolectric:robolectric:4.6.1")
+    testImplementation ("androidx.test:core:1.4.0")
+    testImplementation ("androidx.test.ext:junit:1.1.3")
 }

@@ -12,6 +12,7 @@ import androidx.navigation.compose.composable
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.MultiplePermissionsState
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.StringConstants
 import com.myweatherapp.resource.extension.get
 import com.myweatherapp.resource.extension.myAppPreferences
 import com.myweatherapp.ui.feature.home.HomeScreen
@@ -28,15 +29,15 @@ fun WeatherAppNavigation(
     navController: NavHostController,
     locationPermissionState: MultiplePermissionsState, ) {
     val context = LocalContext.current
-    NavHost(navController, startDestination = if (context.myAppPreferences.get(Constants.sessionConst, false)) Constants.homeRoute else Constants.loginRoute, modifier = Modifier.padding(16.dp),) {
-        composable(route = Constants.loginRoute) {
+    NavHost(navController, startDestination = if (context.myAppPreferences.get(StringConstants.sessionConst, false)) StringConstants.homeRoute else StringConstants.loginRoute, modifier = Modifier.padding(16.dp),) {
+        composable(route = StringConstants.loginRoute) {
             LoginScreen(navController, hiltViewModel<LoginViewModel>())
         }
-        composable(route = Constants.registrationRoute) {
+        composable(route = StringConstants.registrationRoute) {
             RegistrationScreen(navController, hiltViewModel<RegistrationViewModel>())
         }
 
-        composable(route = Constants.homeRoute) {
+        composable(route = StringConstants.homeRoute) {
             if (locationPermissionState.allPermissionsGranted) {
                 HomeScreen(hiltViewModel<HomeViewModel>(), navController)
             } else {
