@@ -1,5 +1,6 @@
 package com.myweatherapp.data.db.dao
 
+import androidx.annotation.Keep
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -8,6 +9,7 @@ import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.data.db.entities.WeatherHistory
 import kotlinx.coroutines.flow.Flow
 
+@Keep
 @Dao
 interface HistoryDao {
     @Insert

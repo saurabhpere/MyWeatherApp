@@ -1,5 +1,8 @@
 package com.myweatherapp.resource
 
+import androidx.annotation.Keep
+
+@Keep
 object StringConstants {
     val cityConst = "City:"
     val countryConst = "Country:"

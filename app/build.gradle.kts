@@ -23,7 +23,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -176,4 +176,8 @@ dependencies {
     testImplementation ("org.robolectric:robolectric:4.6.1")
     testImplementation ("androidx.test:core:1.4.0")
     testImplementation ("androidx.test.ext:junit:1.1.3")
+
+    implementation ("net.zetetic:sqlcipher-android:4.5.4@aar")
+    implementation ("androidx.sqlite:sqlite:2.4.0")
+
 }

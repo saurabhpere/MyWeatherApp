@@ -1,5 +1,8 @@
 package com.myweatherapp.resource
 
+import androidx.annotation.Keep
+
+@Keep
 object Constants {
 
     init {

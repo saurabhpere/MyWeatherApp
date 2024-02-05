@@ -21,3 +21,10 @@ Java_com_myweatherapp_resource_Constants_getImageUrl(JNIEnv *env, jobject thiz) 
     std::string api_key = "https://openweathermap.org/img/wn/";
     return env->NewStringUTF(api_key.c_str());
 }
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_myweatherapp_resource_Keys_sqlKey(JNIEnv *env, jobject thiz) {
+    std::string api_key = "bXlTcWxDaXBoZXJLZXk=";
+    return env->NewStringUTF(api_key.c_str());
+}

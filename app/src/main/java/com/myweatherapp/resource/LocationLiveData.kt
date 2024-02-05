@@ -3,6 +3,7 @@ package com.myweatherapp.resource
 import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Location
+import androidx.annotation.Keep
 import androidx.lifecycle.LiveData
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -10,6 +11,7 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.myweatherapp.data.location.LocationModel
 
+@Keep
 open class LocationLiveData(context: Context) : LiveData<LocationModel>() {
 
     private var fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)

@@ -2,6 +2,7 @@ package com.myweatherapp.di.networkmodule
 
 
 import android.os.Build
+import androidx.annotation.Keep
 import androidx.annotation.RequiresApi
 import com.myweatherapp.resource.Resource
 import com.myweatherapp.data.request.CurrentWeatherRequest
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
+@Keep
 class ApiHelperImpl @Inject constructor(val apiService: ApiService): ApiHelper {
 
     @RequiresApi(Build.VERSION_CODES.O)

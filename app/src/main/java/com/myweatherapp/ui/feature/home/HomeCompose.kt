@@ -74,7 +74,6 @@ fun CurrentWeather(homeViewModel: HomeViewModel, navController: NavHostControlle
     val context = LocalContext.current
 
     if (locationData.value != null){
-        Log.e("mylog-->", "called")
         SideEffect {
             if (locationData.value != null) {
                 val currentWeatherRequest = CurrentWeatherRequest(

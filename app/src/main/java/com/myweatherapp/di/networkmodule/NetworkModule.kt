@@ -1,6 +1,7 @@
 package com.myweatherapp.di.networkmodule
 
 import android.content.Context
+import androidx.annotation.Keep
 import androidx.lifecycle.LiveData
 import com.myweatherapp.data.location.LocationModel
 import com.myweatherapp.resource.Constants
@@ -17,6 +18,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+@Keep
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
