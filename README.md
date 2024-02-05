@@ -77,20 +77,19 @@ Build and run the app on an emulator or physical device.
 ## Screens
 ### Login:
 Allows users to log in with their credentials.
-![Login](https://raw.githubusercontent.com/saurabhpere/MyWeatherApp/blob/main/screenshots/Login.png)
+![Login](screenshots/Login.png)
 
 ### Registration:
 Enables users to create a new account by providing the necessary registration details.
-https://raw.githubusercontent.com/saurabhpere/MyWeatherApp/blob/main/screenshots/Registration.png
+![Login](screenshots/Registration.png)
 
 ### Home - Tab 1 (Current Weather):
 Displays the current weather information based on the device's location obtained through Fused Location API and OpenWeatherMap API.
-https://raw.githubusercontent.com/saurabhpere/MyWeatherApp/blob/main/screenshots/CurrentWeather.png
+![Login](screenshots/CurrentWeather.png)
 
 ### Home - Tab 2 (History Listing):
 Shows a listing of weather history saved in the local Room database.
-https://raw.githubusercontent.com/saurabhpere/MyWeatherApp/blob/main/screenshots/WeatherHistory.png
-
+![Login](screenshots/WeatherHistory.png)
 
 
 ## Contributing
