@@ -77,19 +77,19 @@ Build and run the app on an emulator or physical device.
 ## Screens
 ### Login:
 Allows users to log in with their credentials.
-![Login](screenshots/Login.png)
+<img src="screenshots/Login.png" alt="Screenshot 1" width="400"/>
 
 ### Registration:
 Enables users to create a new account by providing the necessary registration details.
-![Login](screenshots/Registration.png)
+<img src="screenshots/Registration.png" alt="Screenshot 2" width="400"/>
 
 ### Home - Tab 1 (Current Weather):
 Displays the current weather information based on the device's location obtained through Fused Location API and OpenWeatherMap API.
-![Login](screenshots/CurrentWeather.png)
+<img src="screenshots/CurrentWeather.png" alt="Screenshot 3" width="400"/>
 
 ### Home - Tab 2 (History Listing):
 Shows a listing of weather history saved in the local Room database.
-![Login](screenshots/WeatherHistory.png)
+<img src="screenshots/WeatherHistory.png" alt="Screenshot 4" width="400"/>
 
 
 ## Contributing
