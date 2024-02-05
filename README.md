@@ -29,18 +29,17 @@ The application includes screens for user login and registration, with local Roo
 ### Compose Navigation: 
 Navigation within the app is managed using Compose Navigation, providing a seamless flow between screens.
 
-## Screens
-### Login:
-Allows users to log in with their credentials.
 
-### Registration:
-Enables users to create a new account by providing the necessary registration details.
-
-### Home - Tab 1 (Current Weather):
-Displays the current weather information based on the device's location obtained through Fused Location API and OpenWeatherMap API.
-
-### Home - Tab 2 (History Listing):
-Shows a listing of weather history saved in the local Room database.
+## Dependencies
+- HILT
+- Jetpack Compose
+- Room Database
+- Fused Location Provider
+- OpenWeatherMap API
+- Retrofit
+- JUnit
+- Kluent
+- Mockito
 
 ## Unit Test
 This repository provides a comprehensive unit testing setup for Android applications using JUnit, Mockito, and Kluent. The testing framework is designed to ensure the reliability, correctness, and maintainability of the application codebase.
@@ -75,16 +74,24 @@ std::string api_key = "BASE64_API_KEY_HERE"; // Replace with your actual API key
 
 Build and run the app on an emulator or physical device.
 
-## Dependencies
-HILT 
-Jetpack Compose 
-Room Database 
-Fused Location Provider 
-OpenWeatherMap API 
-Retrofit 
-JUnit 
-Kluent 
-Mockito
+## Screens
+### Login:
+Allows users to log in with their credentials.
+https://github.com/saurabhpere/MyWeatherApp/blob/main/screenshots/Login.png
+
+### Registration:
+Enables users to create a new account by providing the necessary registration details.
+https://github.com/saurabhpere/MyWeatherApp/blob/main/screenshots/Registration.png
+
+### Home - Tab 1 (Current Weather):
+Displays the current weather information based on the device's location obtained through Fused Location API and OpenWeatherMap API.
+https://github.com/saurabhpere/MyWeatherApp/blob/main/screenshots/CurrentWeather.png
+
+### Home - Tab 2 (History Listing):
+Shows a listing of weather history saved in the local Room database.
+https://github.com/saurabhpere/MyWeatherApp/blob/main/screenshots/WeatherHistory.png
+
+
 
 ## Contributing
 Feel free to contribute to the WeatherAssignment project by opening issues, providing feedback, or submitting pull requests. Your contributions are highly appreciated.
