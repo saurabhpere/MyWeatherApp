@@ -71,6 +71,11 @@ class HomeViewModelTest {
     }
 
     @Test
+    fun `test getLocationData`(){
+        homeViewModel.getLocationData()
+    }
+
+    @Test
     fun `getCurrentWeatherData success should update loading, weatherResponseState, and insert history data`() =
         runBlockingTest {
             // Arrange
