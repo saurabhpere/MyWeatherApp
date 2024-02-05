@@ -1,5 +1,5 @@
 # WeatherAssignment
-WeatherAssignment is an Android application built using Kotlin and designed with MVVM Clean architecture. The app utilizes HILT for dependency injection, Compose for UI, Room for local database storage, Fused Location API for obtaining the current location, and the OpenWeatherMap API for fetching weather information. It also incorporates a Splash Screen API for a smooth startup experience.
+WeatherAssignment is an Android application built using Kotlin and designed with MVVM Clean architecture. This app fetches users live location after login or registration and show the current weather. Also it save the history of weather and shows a history list in history page. The app utilizes HILT for dependency injection, Compose for UI, Room for local database storage, Fused Location API for obtaining the current location, and the OpenWeatherMap API for fetching weather information. It also incorporates a Splash Screen API for a smooth startup experience.
 
 ## Features
 #### - MVVM Clean Architecture: 
