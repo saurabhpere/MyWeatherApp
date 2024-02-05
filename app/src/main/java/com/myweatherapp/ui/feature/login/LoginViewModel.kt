@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.repository.DatabaseRepository
+import com.myweatherapp.resource.StringConstants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -31,12 +32,12 @@ class LoginViewModel @Inject constructor(val databaseRepository: DatabaseReposit
 
         return if (userList != null) {
             if (users.userPass == userList.userPass) {
-                200 // LOGIN_SUCCESS
+                StringConstants.LOGIN_SUCCESS // LOGIN_SUCCESS
             } else {
-                402 //PASSWORD_MISMATCH
+                StringConstants.PASS_MISMATCH //PASSWORD_MISMATCH
             }
         } else {
-            404 // USER_NOT_FOUND
+            StringConstants.EMAIL_NOT_FOUND // USER_NOT_FOUND
         }
     }
 

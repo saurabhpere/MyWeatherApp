@@ -54,6 +54,9 @@ Mockito is a powerful mocking framework for Java and Kotlin. It allows the creat
 ### Kluent
 Kluent is a fluent assertion library for Kotlin. It simplifies the process of writing assertions by providing a clear and concise syntax. Kluent enhances the readability of tests and promotes expressive assertions.
 
+### Unit test results
+- <img src="screenshots/unittest.png" alt="Screenshot 5" width="200"/>
+
 ## Getting Started
 Clone the repository: git clone https://github.com/saurabhpere/MyWeatherApp
 

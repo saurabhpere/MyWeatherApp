@@ -58,5 +58,4 @@ class RegistrationViewModelTest {
         coVerify { databaseRepository.deleteAllData() }
     }
 
-    // Add more test cases as needed...
 }

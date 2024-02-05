@@ -46,7 +46,7 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `test Successful Login`() = runBlockingTest {
+    fun `checkIfUserExist should invoke callback with success`() = runBlockingTest {
         // Arrange
         val existingUser = Users(userName = "testUser", userPass = "password123")
         coEvery { databaseRepository.getUserList(existingUser.userName) } returns flowOf(listOf(existingUser))
@@ -68,7 +68,7 @@ class LoginViewModelTest {
         val result = LoginViewModel(databaseRepository).determineLoginResult(existingUser)
 
         // Assert
-        assertEquals(200, result)
+        assertEquals(StringConstants.LOGIN_SUCCESS, result)
     }
 
     @Test
@@ -78,10 +78,9 @@ class LoginViewModelTest {
         coEvery { databaseRepository.getUserList(existingUser.userName) } returns flowOf(listOf(existingUser))
 
         // Act
-        loginViewModel.checkIfUserExist(Users(userName = "testUser", userPass = "wrongPassword")) { result ->
-            // Assert
-            assert(result == 402)
-        }
+        val result = loginViewModel.determineLoginResult(Users(userName = "testUser", userPass = "wrongPassword"))
+
+        assertEquals(StringConstants.PASS_MISMATCH, result)
     }
 
     @Test
@@ -90,10 +89,14 @@ class LoginViewModelTest {
         coEvery { databaseRepository.getUserList("nonExistingUser") } returns flowOf(emptyList())
 
         // Act
-        loginViewModel.checkIfUserExist(Users(userName = "nonExistingUser", userPass = "password")) { result ->
-            // Assert
-            assert(result == 404)
-        }
+        val result = loginViewModel.determineLoginResult(
+            Users(
+                userName = "nonExistingUser",
+                userPass = "password"
+            )
+        )
+
+        assertEquals(StringConstants.EMAIL_NOT_FOUND, result)
     }
 
     @Test
@@ -104,8 +107,6 @@ class LoginViewModelTest {
         // Act
         loginViewModel.deleteData()
 
-        // Assert
-//        verify { databaseRepository.deleteAllData() }
     }
 
 }
