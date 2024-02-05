@@ -38,6 +38,7 @@ import androidx.navigation.NavHostController
 import com.myweatherapp.R
 import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.extension.get
 import com.myweatherapp.resource.extension.isEmailValid
 import com.myweatherapp.resource.extension.myAppPreferences
 import com.myweatherapp.resource.extension.set
@@ -91,8 +92,12 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
                 val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
                 loginViewModel.checkIfUserExist(users){
                     if (it == Constants.LOGIN_SUCCESS){
+                        if(context.myAppPreferences.get(Constants.savedUserConst,"") != users.userName) {
+                            loginViewModel.deleteData()
+                        }
                         context.myAppPreferences[Constants.sessionConst] = true
-                        navController.navigate(Constants.homeRoute){
+                        context.myAppPreferences[Constants.savedUserConst] = users.userName
+                        navController.navigate(Constants.homeRoute) {
                             popUpTo(Constants.loginRoute) {
                                 inclusive = true
                             }

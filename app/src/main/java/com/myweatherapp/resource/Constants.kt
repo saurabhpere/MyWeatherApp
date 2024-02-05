@@ -19,6 +19,7 @@ object Constants {
     val timePattern = "HH:mm:ss"
     val savedTimePattern = "dd MMM, HH:mm"
     val sessionConst = "loggedin"
+    val savedUserConst = "userEmail"
 
     //routes
     val homeRoute = "home"
@@ -35,4 +36,5 @@ object Constants {
     val emailNotFoundError = "Email not found in db"
     val invalidEmailError = "Please enter valid email"
     val passwordConfirmError = "Password does not match"
+    val alreadyRegisteredUserMsg = "User is already registered, logging in"
 }

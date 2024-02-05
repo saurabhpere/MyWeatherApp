@@ -27,4 +27,8 @@ class FakeDBHelper: DBHelper {
     override suspend fun getHistoryList(): Flow<List<WeatherHistory>> {
         return flowOf(historyList)
     }
+
+    override suspend fun deleteAllData() {
+        historyList.clear()
+    }
 }

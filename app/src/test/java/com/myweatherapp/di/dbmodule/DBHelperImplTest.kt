@@ -71,4 +71,14 @@ class DBHelperImplTest {
 
         result.shouldEqual(cityInfoDto)
     }
+
+    @Test
+    fun `deleteAllData should delete WeatherHistoryList db successfully`() = runBlockingTest {
+
+        historyDao.deleteData()
+
+        var result = dbHelperImpl.getHistoryList().last()
+
+        result.size.shouldEqual(0)
+    }
 }

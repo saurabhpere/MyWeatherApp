@@ -35,4 +35,12 @@ class LoginViewModel @Inject constructor(val databaseRepository: DatabaseReposit
 
     }
 
+    fun deleteData(){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                databaseRepository.deleteAllData()
+            }
+        }
+    }
+
 }

@@ -22,4 +22,12 @@ class RegistrationViewModel @Inject constructor(val databaseRepository: Database
         }
 
     }
+
+    fun deleteAllData(){
+        viewModelScope.launch {
+            withContext(Dispatchers.IO){
+                databaseRepository.deleteAllData()
+            }
+        }
+    }
 }

@@ -65,4 +65,14 @@ class DatabaseRepositoryTest {
 
         result.shouldEqual(cityInfoDto)
     }
+
+    @Test
+    fun `deleteAllData Should delete WeatherHistoryList data from db successfully`() = runBlockingTest {
+
+        fakeDBHelper.deleteAllData()
+
+        var result = databaseRepository.getHistoryList().last()
+
+        result.size.shouldEqual(0)
+    }
 }

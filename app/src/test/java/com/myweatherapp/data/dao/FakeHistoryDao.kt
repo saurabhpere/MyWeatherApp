@@ -16,4 +16,8 @@ class FakeHistoryDao: HistoryDao {
     override fun getHistoryList(): Flow<List<WeatherHistory>> {
         return flowOf(historyList)
     }
+
+    override fun deleteData() {
+        historyList.clear()
+    }
 }

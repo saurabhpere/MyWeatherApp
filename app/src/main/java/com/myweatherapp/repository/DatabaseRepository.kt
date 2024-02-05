@@ -18,4 +18,6 @@ class DatabaseRepository @Inject constructor(private val dbHelper: DBHelper) {
     }
 
     suspend fun getHistoryList() = dbHelper.getHistoryList()
+
+    suspend fun deleteAllData() = dbHelper.deleteAllData()
 }

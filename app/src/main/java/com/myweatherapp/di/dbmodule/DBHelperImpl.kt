@@ -19,4 +19,6 @@ class DBHelperImpl @Inject constructor(private val usersDao: UsersDao, private v
     }
 
     override suspend fun getHistoryList() = historyDao.getHistoryList()
+
+    override suspend fun deleteAllData() = historyDao.deleteData()
 }

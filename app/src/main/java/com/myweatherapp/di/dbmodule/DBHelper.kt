@@ -13,4 +13,6 @@ interface DBHelper {
     suspend fun insertHistory(weatherHistory: WeatherHistory)
 
     suspend fun getHistoryList(): Flow<List<WeatherHistory>>
+
+    suspend fun deleteAllData()
 }

@@ -37,6 +37,7 @@ import androidx.navigation.NavHostController
 import com.myweatherapp.R
 import com.myweatherapp.data.db.entities.Users
 import com.myweatherapp.resource.Constants
+import com.myweatherapp.resource.extension.get
 import com.myweatherapp.resource.extension.myAppPreferences
 import com.myweatherapp.resource.extension.set
 import com.myweatherapp.ui.helper.PasswordVisualTransformation
@@ -103,13 +104,22 @@ fun RegistrationScreen(navController: NavHostController, registrationViewModel: 
         Button(onClick = {
             if (confirmPassWordFieldValue == passWordFieldValue) {
                 val users = Users(userName = nameFieldValue, userPass = passWordFieldValue)
+                if(context.myAppPreferences.get(Constants.savedUserConst,"") != users.userName){
+                    registrationViewModel.deleteAllData()
+                } else {
+                    Toast.makeText(context, Constants.alreadyRegisteredUserMsg, Toast.LENGTH_SHORT).show()
+
+                }
                 registrationViewModel.insertUser(users = users)
-                context.myAppPreferences["loggedin"] = true
-                navController.navigate("home") {
-                    popUpTo("login") {
+                context.myAppPreferences[Constants.sessionConst] = true
+                context.myAppPreferences[Constants.savedUserConst] = users.userName
+
+                navController.navigate(Constants.homeRoute) {
+                    popUpTo(Constants.loginRoute) {
                         inclusive = true
                     }
                 }
+
             } else {
                 Toast.makeText(context, Constants.passwordConfirmError, Toast.LENGTH_SHORT).show()
             }
