@@ -76,14 +76,14 @@ std::string api_key = "BASE64_API_KEY_HERE"; // Replace with your actual API key
 Build and run the app on an emulator or physical device.
 
 ## Dependencies
-HILT
-Jetpack Compose
-Room Database
-Fused Location Provider
-OpenWeatherMap API
-Retrofit
-JUnit
-Kluent
+HILT 
+Jetpack Compose 
+Room Database 
+Fused Location Provider 
+OpenWeatherMap API 
+Retrofit 
+JUnit 
+Kluent 
 Mockito
 
 ## Contributing
