@@ -77,7 +77,7 @@ Build and run the app on an emulator or physical device.
 ## Screens
 ### Login:
 Allows users to log in with their credentials.
-https://raw.githubusercontent.com/saurabhpere/MyWeatherApp/blob/main/screenshots/Login.png
+![Login](https://raw.githubusercontent.com/saurabhpere/MyWeatherApp/blob/main/screenshots/Login.png)
 
 ### Registration:
 Enables users to create a new account by providing the necessary registration details.
